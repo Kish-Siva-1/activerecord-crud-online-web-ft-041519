@@ -91,9 +91,7 @@ def can_update_multiple_items_at_once
   5.times do |i|
     Movie.create(title: "Movie_#{i}", release_date: 2000+i)
   end
-  binding.pry
-  Movie.all.find("Movie_").update_all(:title => "A Movie")
-  Movie.where("title LIKE (?)", "%Movie_%")
+  Movie.where("title LIKE (?)", "%Movie_%").update_all(:title => "A Movie")
 end
 
 def can_destroy_a_single_item
