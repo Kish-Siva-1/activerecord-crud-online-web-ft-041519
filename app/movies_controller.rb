@@ -96,12 +96,12 @@ end
 
 def can_destroy_a_single_item
   Movie.create(title: "That One Where the Guy Kicks Another Guy Once")
-  Movie.all.find(title: "That One Where the Guy Kicks Another Guy Once").destroy
+  Movie.all.find_by_title("That One Where the Guy Kicks Another Guy Once").destroy
 end
 
 def can_destroy_all_items_at_once
   10.times do |i|
     Movie.create(title: "Movie_#{i}")
   end
-  Movie.all.find("Movie_").destroy_all
+  Movie.where("title LIKE (?)", "%Movie_%").destroy_all
 end
