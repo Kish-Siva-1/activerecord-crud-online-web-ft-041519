@@ -93,6 +93,7 @@ def can_update_multiple_items_at_once
   end
   binding.pry
   Movie.all.find("Movie_").update_all(:title => "A Movie")
+  Movie.where("title LIKE (?)", "%Movie_%")
 end
 
 def can_destroy_a_single_item
